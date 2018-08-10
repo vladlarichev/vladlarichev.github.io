@@ -1,0 +1,12 @@
+.nicemacher input {
+    position: absolute;
+    right: 52px;
+}
+
+.content-wrapper {background: #f5f3f34d!important;}
+
+.card, .breadcrumb {box-shadow: 2px 5px 5px rgba(0,0,0,0.3) !important}
+
+/* #mainNav {background-color: #f7f7f7 !important;} */
+
+/* .navbar-brand {color: #343a40 !important } */

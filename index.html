@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>fews.Warn</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+	<link rel="stylesheet" href="lib/timecontrol/leaflet.timedimension.control.css" />
+	<link href="lib/Leaflet.markercluster-1.3.0/MarkerCluster.css" rel="stylesheet">
+	<link href="lib/Leaflet.markercluster-1.3.0/MarkerCluster.Default.css" rel="stylesheet">
+	<link rel="stylesheet" href="lib/leafletPulse/L.Icon.Pulse.css" />
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' >
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+	<link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+ 	<link href="css/sb-admin.css" rel="stylesheet">
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> 
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+	<span class="logosImages pull-right" >
+		<img src="img/hydrotec.png"  style="padding-right: 5px" height="40px" alt="Mountain View">
+		<img src="img/deltares.png"  height="40px" alt="Mountain View" >
+	</span>
+    <a class="navbar-brand" style="padding-left: 40px" href="index.html"> Hydrotec Early Warning Client</a>
+
+    <button class="navbar-toggler navbar-toggler-right" id='sidebartoggler' type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="index.html">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Delft-FEWS</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="charts.html">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Diagramme</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="tables.html">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">tabellen</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Konfiguration</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="navbar.html">Beispiel 1</a>
+            </li>
+            <li>
+              <a href="cards.html">Beispiel 2</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Weitere Beispielseiten</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="login.html">Login Page</a>
+            </li>
+            <li>
+              <a href="register.html">Registration Page</a>
+            </li>
+            <li>
+              <a href="forgot-password.html">Forgot Password Page</a>
+            </li>
+            <li>
+              <a href="blank.html">Blank Page</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-sitemap"></i>
+            <span class="nav-link-text">Weitere Menüs</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseMulti">
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+            <li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="https://www.hydrotec.de/">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">Hydrotec.de</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-envelope"></i>
+            <span class="d-lg-none">Messages
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+            <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">New Messages:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>David Miller</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>Jane Smith</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>John Doe</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all messages</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-bell"></i>
+            <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+            <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">New Alerts:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all alerts</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mr-lg-2">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search for...">
+              <span class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+		
+      </ul>
+    </div>
+  </nav>
+  
+	<div class="loader" style="display:none"></div> 
+
+  
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Arbeitsübersicht</li>
+      </ol>
+
+      <!-- 1. Element - Karte (links) + Steuer Elemente (rechts) -->
+  	  <div class="row">
+        <!-- linke Seite - Karte Block -->
+  		  <div class="col-6 ">
+    			<div class="card mb-3 ">
+    				<div class="card-header"> Web Delft-FEWS Viewer</div>
+    				<div class="card-body" style="padding:0px">
+    				  <div id="mapid" style="width: 'inherit'; height: 650px;"></div>			
+    				</div>
+    			  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    			</div>
+    		</div>
+
+    		<!-- rechte Seite -->
+    		<div class="col-6" >
+			<div id="accordion">
+			
+    			<div class="card mb-3">
+					<div class="card-header" id="headingZero"> 
+						<h5 class="mb-0">
+						  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+							Zeitreihen Viewer
+						  </button>
+						</h5>
+				    </div>
+					<div id="collapseZero" class="collapse show" aria-labelledby="headingZero">
+						<div class="card-body">
+							<div class="insertDiv"></div>
+							<div class="platzhalter"></div>
+							<div class="nicemacher" >
+								<p>Tage (<span id="tageDiv"></span>): <input type="range" min="1" max="30" value="15" name="user" id="txt_tage"></p><p>  Station: <input type="text" list="Stationen" value="Bonn" name="user" id="txt_name"></p>
+								<p><button  class="abrage btn btn-success"><i class="fa fa-map-marker "></i> Abfragen</button></p>
+							</div>
+						</div>
+						<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+					</div>
+    			</div>
+    			
+          
+
+				<div class="card mb-3">
+					<div class="card-header" id="headingOne"> 
+						<h5 class="mb-0">
+						  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Delft-FEWS Administrationsbereich
+						  </button>
+						</h5>
+					  </div>
+				  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+					<div class="card-body">
+					  <div class="card-body nicemacher">
+						<p>FEWS Kontrollbereich: </p>
+						<button class="btn btn-success" onclick="importExample()" >     <i class="fa fa-map-marker "></i></span> VerbaendeNRW.WS</button>
+						<button class="btn btn-success" onclick="htmlDok()" ><i class="fa fa-cogs" aria-hidden="true"></i> WorkFlow Status Importieren</button>
+						<div id="stations"></div>
+					  </div>
+					  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+					</div>
+				  </div>  				
+      			</div>
+      			
+      			<div class="card mb-3">
+      				<div class="card-header" id="headingTwo"> 
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    Zugriff auf die IoT Infrastruktur
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="card-body nicemacher">
+                        <p>Administration der IoT Station</p>
+                        <button class="btn btn-danger" onclick="startLosant()" ><i class="fa fa-map-marker "></i></span> Monitoring Starten</button>
+                        <button class="btn btn-secondary" onclick="stopLosant()" ><i class="fa fa-cogs" aria-hidden="true"></i> Monitoring ausschalten</button>
+                        <div id="stations"></div>
+                    </div>
+                    <div class="card-body nicemacher">
+                        <p>eigene Schwellenwerte definieren</p>
+                        <p>Bezeichnung <input id="sw_bezeichnung" value="Hochwasser Level 1"></input><span style="color:green" id="holder_bezeichnung"></span></p>
+                        <p>Schwellenwert <input  id="sw_wert" value=264> </input><span style="color:green" id="holder_wert"></span></p>
+						<p>SMS  <input  id="sw_wert" value=491704641122> </input><span style="color:green" id="holder_wert"></span></p>
+                        <button class="btn btn-success" id="buttonStartLosant" onclick="postSWLosant()" ><i class="fa fa-bell-o"></i></span> Beobachtungswert einrichten</button>
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+              </div>
+      			</div>		
+          </div>
+        </div>
+      </div>
+	  
+      <!-- Tablle für FEWS laden -->
+      <div class="row">
+        <div class="col">
+          <div class="card" id="tableHide" style="display:none">
+            <div class="card-header">
+              <i class="fa fa-table"></i> FEWS WorkFlow Integration</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Workflow</th>
+                      <th>Statatus</th>
+                      <th>Zeitstempel</th>
+    				  <th>Aufruf</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Workflow</th>
+                      <th>Statatus</th>
+                      <th>Zeitstempel</th>
+    				  <th>Aufruf</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>	
+    	    </div>
+        </div>
+      </div>
+
+    </div>
+  </div>  	   
+  <!-- /.container-fluid-->
+  <!-- /.content-wrapper-->
+	
+	<footer class="sticky-footer">
+		<div class="container">
+			<div class="text-center">
+				<small>Copyright © Enviot 2018</small>
+			</div>
+
+		</div>
+	</footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <datalist id="Stationen"><option value="Bonn"><option value="Köln"><option value="Düsseldorf"><option value="Koblenz"><option value="POTSDAM"><option value="Diez Hafen"><option value="Kalkofen neu"><option value="Lahnstein Schleuse UP"><option value="BERLIN - UNTERSCHLEUSE UP"><option value="BERLIN - UNTERSCHLEUSE OP"><option value="BERLIN - OBERSCHLEUSE UP"><option value="BERLIN - OBERSCHLEUSE OP"><option value="DREYSCHLOOT"><option value="LEDASPERRWERK UP"><option value="SCHWARMSTEDT"><option value="NEUSTADT"><option value="HERRENHAUSEN"><option value="WASSERHORST"><option value="HIMMELPFORT UP"><option value="HIMMELPFORT OP"><option value="HORNEBURG"><option value="LÜHORT LFK"><option value="RAUNHEIM"><option value="FRANKFURT OSTHAFEN"><option value="HANAU BRÜCKE DFH"><option value="AUHEIM BRÜCKE DFH"><option value="KROTZENBURG"><option value="MAINFLINGEN"><option value="KLEINOSTHEIM_WUK"><option value="OBERNAU"><option value="KLEINHEUBACH"><option value="FAULBACH"><option value="WERTHEIM"><option value="STEINBACH"><option value="WÜRZBURG"><option value="ASTHEIM"></datalist>
+
+	
+	<!-- Bootstrap core JavaScript-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Page level plugin JavaScript-->
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin.min.js"></script>
+	<!-- Custom scripts for this page-->
+	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+	<script type="text/javascript" src="lib/timecontrol/leaflet.timedimension.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://www.dwd.de/DWD/warnungen/warnmodul/warnmod_leaflet-betterwms.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="lib/Leaflet.markercluster-1.3.0/leaflet.markercluster.js"></script>
+	<script src="lib/Leaflet.markercluster-1.3.0/leaflet.markercluster.layersupport.js"></script>
+	<script src="lib/leafletPulse/L.Icon.Pulse.js" /></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/nezasa/iso8601-js-period/master/iso8601.min.js"></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<!-- <script src="vendor/chart.js/Chart.min.js"></script>-->
+	<script src="vendor/datatables/jquery.dataTables.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+	<script>
+  
+	<!-- plot.ly -->
+	const BonnString ='https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/';
+	const StationMeta = 'https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations.json?includeTimeseries=true&includeCharacteristicValues=true';
+	String.prototype.replaceAt=function(index, replacement) {
+    	return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+	};	
+
+	var prettyString = function (n) {
+		return n.replace(/\w\S*/g, function(txt){
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+	}
+	//divs mit https://haltu.github.io/muuri/ draggable machen
+	var pDiv = $(".insertDiv")[0];
+	
+	var plotDate = function (tage, station){
+		var Bvalues = [], pCollection = [], Btimestamps = [], request = BonnString, Meta = StationMeta;
+		
+		//Auswahl über die Karte
+		if (station) {
+			var StationMetaStadt = Meta += '&ids=' + station;
+			request = request += station + '/W/measurements.json?start=P' + tage + 'D'; 
+		}else {
+			request = request += 'BONN/W/measurements.json';
+			console.log("%c keine Karte - " +request, "background-color:yellow");
+		}
+		//Messwerte für Station holen
+		fetch(request)
+		.then((resp) => resp.json())
+		.then(function(data){
+			data.forEach(function(num){
+				Btimestamps.push((num.timestamp).replaceAt(10, " ").slice(0, -6));
+				Bvalues.push(num.value);
+			})
+		var pData = {
+			x: Btimestamps,
+			y: Bvalues,
+			type: 'scatter',
+			mode: "lines",
+			name: 'Wasserstand',
+			line: {color: '#17BECF', width: 4}
+		};			
+		pCollection.push(pData);	
+		})
+		.then(function(x){
+			
+			var playout = {
+				showlegend: false,
+				annotations: [],
+				hovermode: false,
+				title: 'Station ' + prettyString(station),
+				yaxis: {
+					title: "Wasserstand in cm",
+					range: [Math.min(...Bvalues)*0.99, Math.max(...Bvalues)*1.01]
+					}
+			};
+
+			//Warnlevel holen
+			//datum aus Bonnstring übernehmen mit &ids=BONN			
+			fetch(StationMetaStadt)
+			.then((s) => s.json())
+			.then(function(wd){
+				(wd[0].timeseries[0].characteristicValues).map(function(i){
+           			console.log('%c abfrage: ' + StationMetaStadt, "background-color:black;color:white");
+					var tlv = i.value;
+					var lv = [];
+					Btimestamps.forEach((a)=>lv.push(tlv));
+					pCollection.push({
+						x: Btimestamps,
+						y: lv,
+						type: 'scatter',
+						mode: "lines",
+						name: i.longname,
+						line: {
+							color: 'rgb(128, 0, 128)',
+							width: 2
+						}
+					});
+					var presult = {
+						//xref: 'paper',
+						x: Btimestamps[Btimestamps.length-1],
+						y: i.value,
+						xanchor: 'right',
+						yanchor: 'bottom',
+						text: i.longname,
+						showarrow: true,
+						font: {
+						  family: 'Arial',
+						  size: 12,
+						  color: 'black'
+						}
+					  };
+					playout.annotations.push(presult);
+				});
+			}).finally(function(){Plotly.newPlot(pDiv, pCollection, playout);});
+		})
+	};
+	
+	plotDate(15, "Bonn");
+	
+	$(document).ready(function(){
+    var slider = document.getElementById("txt_tage");
+    var output = document.getElementById("tageDiv");
+    output.innerHTML = slider.value;
+    $('#txt_tage').blur(function(){  console.log(1);})
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    
+    }
+
+		$(".abrage").click(function(){
+			var setter = $("#txt_tage").val();
+			var name = $("#txt_name").val();
+			console.log(setter, name);
+			plotDate(setter, name)
+		});
+	});
+	
+	<!-- Leaflet -->
+	//andere Hintergrundskarte?
+	//var osmlayer =  L.tileLayer('http://{s}.tiles.mapbox.com/v3/gvenech.m13knc8e/{z}/{x}/{y}.png', {
+	//var osmlayer =  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {							
+    //attribution: 'Map data: &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+	var osmlayer =  L.tileLayer('https://api.mapbox.com/styles/v1/vladsalat/cjhc1y7s20scc2rlmnw9ajb5e/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmxhZHNhbGF0IiwiYSI6ImNpdXh4cjM4YzAwMmsyb3IzMDA0aHV4a3YifQ.TiC4sHEfBVhLetC268aGEQ', {
+		attribution: 'Map data: &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, Map style: &copy; <a href="https://www.hydrotec.de/">Hydrotec Aachen</a> contributors',
+		maxZoom: 18
+	});
+
+	var qs=decodeURI(location.search.slice(1));  //URL parameter
+
+	var warnlayer = L.tileLayer.betterWms("https://maps.dwd.de/"+(qs!=6 &&qs!=7?"geoproxy_warnungen/service/":"geoserver/dwd/wms/"), {
+		layers: (qs!=7? 'Warnungen_Gemeinden_vereinigt':'Warnungen_Landkreise')+(isNaN(qs) &&!qs.match(/^ort=/) && qs.match(/[a-z]|UV/)? '_'+qs:''),  // Filterung
+		// eigene Styled Layer Descriptor (SLD) können zur alternativen Anzeige der Warnungen genutzt werden (https://docs.geoserver.org/stable/en/user/styling/sld/reference/)
+		//sld: "css/mapstyle.sld",
+		format: 'image/png',
+		transparent: true,
+		opacity: 0.5,
+		attribution: 'Warndaten: &copy; <a href="https://www.dwd.de">DWD</a>'
+	});
+
+	var gemeindelayer = L.tileLayer.wms("https://maps.dwd.de/geoproxy_warnungen/service/", {
+		layers: 'Warngebiete_Gemeinden',  //DLM1000_Bundeslaender_Landkreise_gruen
+		format: 'image/png',
+		styles: '',
+		transparent: true,
+		opacity: 0.6,
+		attribution: 'Geobasisdaten Gemeinden: &copy; <a href="https://www.bkg.bund.de">BKG</a> 2015 (Daten verändert)'
+	});
+
+
+  //
+  //create mymap!
+	var today = new Date((new Date()).setUTCMinutes(0,0,0) + (2*60*60*1000));
+	var currentTime = new Date(today.getTime() - (0.25*1000*60*60));
+	var twohoursago = new Date(today.getTime() - (1.25*1000*60*60));
+	//currentTime.setUTCMinutes(0, 0, 0);  
+ 
+	var mymap = L.map('mapid', 
+	{
+	pseudoFullscreen: true,
+	timeDimension: true,
+    timeDimensionControl: true,
+	TimeDimension:{
+
+	},
+    timeDimensionOptions: {
+		timeInterval: twohoursago + "/"+ currentTime,
+		period: "PT15M",
+		currentTime: currentTime,
+		limitSliders: true
+	
+	},
+	timeDimensionControlOptions: {
+		minSpeed: 0.1,
+		speedStep: 0.05,
+		maxSpeed: 0.6,
+		autoPlay: true,
+		title: 'Zeitviewer',
+		position: "bottomleft",
+		backwardButton:  false,
+		forwardButton:  	false,
+		playerOptions: {
+			loop: true
+		}
+	}
+	}).setView([51.29881306, 9.942083066], 6).addControl(new L.Control.Fullscreen());;
+	
+
+	var baseLayers = {"OpenStreetMap": osmlayer.addTo(mymap)};
+
+	var SFkompositlayer = L.tileLayer.wms("https://maps.dwd.de/geoserver/dwd/wms/", {
+		layers: 'dwd:SF-Produkt',  //Radarkomposit (SF, gleitende Aufsummierung)
+		format: 'image/png', styles: '', transparent: true, opacity: 0.8, 
+    attribution: 'Satellitenbild METEOSAT (RGB) Europa Zentral: &copy; <a href="http://www.dwd.de">DWD</a>'
+	});
+
+	var RXkompositlayer = L.tileLayer.wms("https://maps.dwd.de/geoserver/dwd/wms/", {
+		layers: 'dwd:FX-Produkt',  //Radarvorhersage (Basis RX)
+		format: 'image/png', styles: '', transparent: true, opacity: 0.8,
+		attribution: 'Satellitenbild METEOSAT (RGB) Europa Zentral: &copy; <a href="http://www.dwd.de">DWD</a>'
+	});	
+	
+	var dwdRX = L.tileLayer.wms("https://maps.dwd.de/geoserver/dwd/wms/", {
+		layers: 'dwd:RX-Produkt',  //Radarkomposit (RX)
+		format: 'image/png', styles: '', transparent: true, opacity: 0.8,
+		attribution: 'Satellitenbild METEOSAT (RGB) Europa Zentral: &copy; <a href="http://www.dwd.de">DWD</a>'
+	});
+	
+	var NCEW = L.tileLayer.wms("https://maps.dwd.de/geoserver/dwd/wms/", {
+		layers: 'dwd:NCEW_POLYGONS',  //NowCastELEC-WarnWetterApp (NCEW)
+		format: 'image/png', styles: '', transparent: true, opacity: 0.8, 
+		attribution: 'Satellitenbild METEOSAT (RGB) Europa Zentral: &copy; <a href="http://www.dwd.de">DWD</a>'
+	});
+
+	var kompositlayer = L.tileLayer.wms("https://maps.dwd.de/geoserver/dwd/wms/", {
+		layers: 'dwd:SF-Produkt_(0-24)',  //Radarkomposit (SF)
+		format: 'image/png', styles: '', transparent: true, opacity: 0.8,
+		attribution: 'Satellitenbild METEOSAT (RGB) Europa Zentral: &copy; <a href="http://www.dwd.de">DWD</a>'
+	});
+
+	var seenlayer = L.tileLayer.betterWms("https://maps.dwd.de/geoproxy_warnungen/service/", {  //
+		layers: 'Warnungen_Binnenseen,Warnungen_Kueste',
+		format: 'image/png', styles: '', transparent: true, opacity: 0.6
+	});
+
+	var emptylayer = L.tileLayer({"OpenStreetMap": osmlayer.addTo(mymap), opacity: 0.7});
+
+	var overLayers = {
+			"<span title='DWD Geoserver dwd:Warnungen_Gemeinden_vereinigt'>Warnungen einblenden</span>": warnlayer,
+			"<span title='DWD Geoserver Gemeindewarngebiete'>Gemeindegrenzen</span>": gemeindelayer,
+			"<span title='DWD Geoserver Gemeindewarngebiete'>Radarkomposit (SF, gleitende Aufsummierung)</span>": SFkompositlayer,
+			"<span title='DWD Geoserver Gemeindewarngebiete'>Radarkomposit (RX)</span>": L.timeDimension.layer.wms(RXkompositlayer).addTo(mymap),
+			"<span title='DWD Geoserver Gemeindewarngebiete'>NowCastELEC-WarnWetterApp (NCEW)</span>": L.timeDimension.layer.wms(NCEW).addTo(mymap),
+			"<span title='Satellitenbild METEOSAT'>WX-Radarprodukt (Auflösung 1km, 5 minütig) </span>": kompositlayer, 			
+			"<span onclick='plotBFG()' title='FEWS MWS'>Stationen BFG</span>": seenlayer.addTo(mymap),
+			"<span title='Warnungen_Binnenseen und Küste'>Warnungen Binnenseen</span>": qs.match("see")?seenlayer.addTo(mymap):seenlayer  //?ort="Ostsee", 
+	};
+	
+	// Layercontrol-Element erstellen und hinzufügen
+	L.control.layers(baseLayers, overLayers).addTo(mymap);
+	
+	let URLStations = 'https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations.json?includeTimeseries=true&includeCurrentMeasurement=true';
+  var myLayerGroup = L.layerGroup();
+  var Meta = StationMeta;
+  //Cluster einstellen
+	var mcgLayerSupportGroup = L.markerClusterGroup.layerSupport({ 
+		maxClusterRadius: 60, //A cluster will cover at most this many pixels from its center
+	  spiderfyOnMaxZoom: true, showCoverageOnHover: true, zoomToBoundsOnClick: true  
+	});
+
+	var plotBFG = function (){
+		var mst = fetch(URLStations)
+			.then((resp) => resp.json())
+			.then(function(data){ 
+				data.map(function(elem){
+					if (elem.longitude){
+						var gcolor = ''; 
+						switch(elem.timeseries[0].currentMeasurement.trend) {
+							case -1:
+								gcolor = "rgba(240, 194, 12, 0.8)";
+								break;
+							case 0:
+								gcolor = "rgba(110, 204, 57, 0.8)";
+								break;
+							case 1:
+								gcolor = "rgba(241, 128, 23, 0.8)";
+								break;
+							default:
+								gcolor = "rgba(110, 204, 57, 0.8)";
+						} 
+						var geojsonFeature = {
+							"type": "Feature",
+							"properties": {
+							"agency": elem.agency,
+							"name": elem.longname,
+							"shortname": elem.shortname
+							},    
+							"geometry": {
+								"type": "Point",
+								"coordinates": [elem.longitude, elem.latitude]
+							}
+						};
+						<!-- more options hier https://leafletjs.com/reference-1.3.0.html#path -->
+						var geojsonMarkerOptions = {
+							radius: 8,
+							fillColor: gcolor,
+							color: "#000",
+							weight: 0.8,
+							opacity: 1,
+							fillOpacity: 1
+						};
+
+						myLayerGroup.addLayer(L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng){return L.circleMarker(latlng, geojsonMarkerOptions);}}).addTo(mymap).bindPopup('Station: '+prettyString(elem.shortname)+'<p><a href="#">Details</a></p><p>Station beobachten').on('click', function(){
+						$("#txt_name").val(elem.shortname);
+						plotDate(1,elem.shortname)}));
+		 
+					}
+			});
+		});
+
+		mcgLayerSupportGroup.addTo(mymap);
+		
+		mcgLayerSupportGroup.checkIn(myLayerGroup); // <= this is where the magic happens!
+
+		myLayerGroup.addTo(mymap);
+	}();
+	
+	
+	<!-- FEWS IMPORT -->
+	
+	//FEWS Stationen
+	var urlFEWS = 'http://localhost:8080/FewsPiService/fewspiservice/v1/locations?filterId=VerbaendeNRW.WS&documentVersion=1.23&convertDatum=false';
+	
+	function importExample() {
+		$.ajax({
+		type: "GET",
+		url: urlFEWS,
+		dataType: "xml",
+		success: xmlParser
+	   });
+	};
+
+	function xmlParser(xml) {
+		$(xml).find("location").each(function (i, p) {
+			var parsedData = p.children ;
+			var pDtype = parsedData.length;
+			var val = {};
+			val.shortName = parsedData[pDtype-6].textContent;
+			val.lat = parseFloat(parsedData[pDtype-5].textContent);
+			val.lon = parseFloat(parsedData[pDtype-4].textContent);
+			if (val.lat > 0)  myLayerGroup.addLayer(L.marker([val.lat, val.lon]).bindPopup("<b>FEWS</b> Integration. Niederschlagsstation <b>" + val.shortName + "</b> <a href='#'>zur Station wechseln</a>").on('click', function(){plotDate(15, "Bonn")}));
+		});
+	};
+
+  //------------------------------------------------------------------------------------------------------------------------------
+	//FEWS TaskRuns
+	var taskRunsLink = 'http://pcvladislav:8080/FewsPiService/fewspiservice/v1/taskruns?documentVersion=1.23&onlyCurrent=false&onlyForecasts=true';
+	
+	var htmlDok = function getTaskRuns() {
+		$( ".loader" ).show(); 
+		return fetch(taskRunsLink)
+			.then(response => response.text())
+			.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+			.then(xml => parseXmlTaskRuns(xml))
+	};
+	
+	var parseXmlTaskRuns = function(htmlDok){
+		var pArray = htmlDok.getElementsByTagName("taskRun")
+		var counterSet = 0;
+		$( "#tableHide" ).show();
+		Array.from(pArray).forEach(function(item) {
+			//while (counterSet <= 1800){
+				if (item.getElementsByTagName("description")[0]){
+					var pname = item.getElementsByTagName("description")[0].textContent;
+					var status = item.getElementsByTagName("status")[0].textContent;
+					var date = item.getElementsByTagName("completionTime")[0].attributes.date.value;
+					var time = item.getElementsByTagName("completionTime")[0].attributes.time.value;
+					var taskRun = {
+						"pname" : pname,
+						"status": status,
+						"date":  date + " " + time,
+					}
+					addValueToTable(taskRun);
+				}
+		});	
+		$("td:contains('approved')").css("background","#91afd6");
+		$("td:contains('completed fully successful')").css("background","#28a745");
+		$("td:contains('completed partly successful')").css("background","#fff6d2");
+		<!-- $('#dataTable').DataTable(); -->
+		$(document).ready(function() {$('#dataTable').DataTable();});
+		$( ".loader" ).hide(); 
+	};
+	
+	var toggleLoader = function(){
+		$( ".loader" ).toggle(100, function(){$( ".loader" ).delay(3000).fadeToggle(100)});
+	}
+	
+	function addValueToTable(elem) {
+		var newRow = $("<tr class='odd'role='row'>");
+		var cols = "";
+		cols += '<td class="sorting_1">' + elem.pname +  '</td>';
+		cols += '<td class="sorting_1">' + elem.status + '</td>';
+		cols += '<td class="sorting_1">' + elem.date +   '</td>';
+		cols += '<td class="sorting_1"><button class="btn btn-link" onclick="toggleLoader()">Neustarten</button></td>';
+		newRow.append(cols);
+		$("table.table-bordered").append(newRow);
+	};
+	
+ 
+	//------------------------------------------------------------------------------------------------------------------------------
+  //fetch losant station to plotly
+  var initialState = [], lastValueLosant = "", aktualValueLosant = "", cnt = 0, setter_warnlevel = [],newValues = [];
+  var stationLosant = 'https://triggers.losant.com/webhooks/IrtxACwGnnw-y7AwVqfPqE7SmQEPdFEAccpJmVMQaA1$';
+  var lurl = 'https://triggers.losant.com/webhooks/IrtxACwGnnw-y7AwVqfPqE7SmQEPdFEAccpJmVMQaA1$';
+  var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'red'});
+  var losantDesign = {showlegend: true,annotations: [],title: 'GIS to IoT Integration',yaxis: {title: "Ultrashallberechnung (in cm)"}}
+  
+	
+  //bezechnungEinfügen und Losant mit Parametern ausführen
+	var updateLosantDiv = function(ldata){
+    setter_warnlevel = ldata.warnlevel;
+		$('#holder_bezeichnung').text("("+ldata.name+")");
+		$('#holder_wert').text("("+ldata.warnlevel+")");
+		startLosant(ldata);
+	}
+	
+	//just get "aktualValueLosant"
+	var loadLosant = function(){
+		fetch(stationLosant)
+		.then((resp) => resp.json())
+		.then(function(losant){
+      if (losant[losant.length-1]){
+        aktualValueLosant = losant[losant.length-1].data.tempC;
+        lastValueLosant = losant[losant.length-1].data.tempC;
+      }else{ aktualValueLosant = lastValueLosant };
+		})
+	};
+	
+	var updateLosantPlot = function(){
+		loadLosant();
+		return aktualValueLosant;
+	} 
+	
+	
+  var getJustValeu = function() {
+    return parseInt(setter_warnlevel);
+  }
+	
+	var startLosant = function(value){
+		
+    var liveLevel = {
+  		y: [updateLosantPlot()],
+  		type:'line',
+      name:'Wasserstand'
+  	};
+    
+    newValues.push(liveLevel);
+		
+  	if (value) {
+      var ywert = getJustValeu()
+  			var liveLevel2 = {
+  			y: [ywert],
+  			type:'lines',
+  			name: value.name,
+        line: {
+          color: 'rgb(220,53,69)',
+          width: 3
+        },
+  		}
+      newValues.push(liveLevel2);
+
+      var pliveLevel2 = {
+            //xref: 'paper',
+            y: [ywert],
+            text: value.name,
+            showarrow: true,
+            font: {
+              family: 'Arial',
+              size: 12,
+              color: 'black'
+            }
+      };  
+      //losantDesign.annotations.push(pliveLevel2);
+		}
+
+    Plotly.purge(pDiv);
+		Plotly.plot(pDiv,newValues, losantDesign);
+		
+    //abo auf plotLosant
+		setLosantInterval = setInterval(plotLosant,3000);
+		
+    if (typeof losantMarker != "undefined") {mymap.removeLayer(losantMarker)};
+
+		losantMarker = L.marker([50.768748, 6.099691],{icon: pulsingIcon}).addTo(mymap);
+	}
+
+	
+	var plotLosant = function(){
+		if (getJustValeu()>0) { 
+			Plotly.extendTraces(pDiv ,{y:[[updateLosantPlot()],[getJustValeu()]]}, [0,1])
+		} else {
+			Plotly.extendTraces(pDiv ,{y:[[updateLosantPlot()]]}, [0])};
+			cnt++;
+			if(cnt>25){
+				Plotly.relayout(pDiv, {
+					xaxis: {
+						range: [cnt-15,cnt]
+				}})
+			}				
+	};
+	
+	var stopLosant = function(){
+    $("#buttonStartLosant").removeClass("btn-warning").addClass("btn-success");
+    Plotly.purge(pDiv);
+		console.log('stop');
+		mymap.removeLayer(losantMarker);
+		clearInterval(setLosantInterval);
+    plotDate(15, "Bonn");
+	};
+
+  //neue Warnschwelle zu Losant schicken
+  var postSWLosant = function(){
+    $("#buttonStartLosant").removeClass("btn-success").addClass("btn-warning");
+    var lbezechnung = $('#sw_bezeichnung').val();
+    var lwert = $('#sw_wert').val();
+    var ldata = {
+      "name": lbezechnung,
+      "warnlevel":lwert
+    }
+    $.ajax({
+      type: "POST",
+      url: lurl,
+      data: ldata,
+      success: updateLosantDiv(ldata)
+    });
+  } 
+
+		</script>
+		</div>
+
+	
+	</body>
+
+</html>

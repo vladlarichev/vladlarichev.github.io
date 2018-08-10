@@ -1,0 +1,9 @@
+<FeatureTypeStyle><Rule><LineSymbolizer><Stroke><CssParameter
+name="stroke">#F5B800</CssParameter><CssParameter
+name="stroke-width">8</CssParameter><CssParameter
+name="stroke-linejoin">round</CssParameter><CssParameter
+name="stroke-linecap">round</CssParameter></Stroke></LineSymbolizer><LineSymbolizer><Stroke><CssParameter
+name="stroke">#FFFF00</CssParameter><CssParameter
+name="stroke-width">4</CssParameter><CssParameter
+name="stroke-linejoin">round</CssParameter><CssParameter
+name="stroke-linecap">round</CssParameter></Stroke></LineSymbolizer></Rule></FeatureTypeStyle>
